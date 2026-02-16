@@ -2,12 +2,12 @@
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
  * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-02-16 15:59:49
+ * @LastEditTime: 2026-02-16 16:10:58
 -->
 
 # MicroMain
 
-微前端架构主仓
+微前端主仓
 
 ## 链接
 
