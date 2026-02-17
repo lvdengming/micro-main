@@ -2,12 +2,15 @@
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
  * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-02-16 16:10:58
+ * @LastEditTime: 2026-02-17 15:48:25
 -->
 
 # MicroMain
 
 微前端主仓
+
+- 主仓：[https://github.com/lvdengming/micro-main](https://github.com/lvdengming/micro-main)
+- angular 子仓：[https://github.com/lvdengming/micro-angular](https://github.com/lvdengming/micro-angular)
 
 ## 链接
 
