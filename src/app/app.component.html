@@ -2,7 +2,7 @@
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
  * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-02-16 22:23:29
+ * @LastEditTime: 2026-02-17 21:25:21
 -->
 
 <nav>
@@ -13,6 +13,18 @@
   <a [routerLink]="[RouteName.ANGULAR_HOME]">angular-home</a>
 
   <a [routerLink]="[RouteName.Angular_DETAIL]">angular-detail</a>
+
+  <button (click)="sendData()">Send Data</button>
 </nav>
+
+<div class="micro-states-wrapper">
+  @for (state of microStates(); track state.timeStr) {
+    <p class="micro-state-item">
+      <span>[{{ state.timeStr }}] </span>
+      <span>{{ state.from }}: </span>
+      <span>{{ state.data }}</span>
+    </p>
+  }
+</div>
 
 <router-outlet></router-outlet>
