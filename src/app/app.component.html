@@ -2,7 +2,7 @@
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
  * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-02-17 21:25:21
+ * @LastEditTime: 2026-02-18 10:40:00
 -->
 
 <nav>
@@ -18,7 +18,7 @@
 </nav>
 
 <div class="micro-states-wrapper">
-  @for (state of microStates(); track state.timeStr) {
+  @for (state of microStates(); track $index) {
     <p class="micro-state-item">
       <span>[{{ state.timeStr }}] </span>
       <span>{{ state.from }}: </span>

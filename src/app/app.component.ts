@@ -2,7 +2,7 @@
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
  * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-02-17 21:41:00
+ * @LastEditTime: 2026-02-18 10:38:08
  */
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
       ...this.__initState,
       from: 'main',
       timeStr: this.__getTimeStr(),
-      data: 'Hello Qiankun! -- ' + Math.random().toString(16).slice(2, 6),
+      data: 'Hello from main -- ' + Math.random().toString(16).slice(2, 6),
     };
 
     this.__actions.setGlobalState(state);
