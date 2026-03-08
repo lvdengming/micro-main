@@ -8,10 +8,11 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { registerMicroApps } from 'qiankun';
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
+import { environment } from './environments/environment';
 
 const getMicroApp = (name: string) => ({
   name,
-  entry: `//localhost:8001`,
+  entry: environment.production ? 'http://localhost:8001/index.html' : '//localhost:8001',
   container: '#micro-app',
   activeRule: (location: Location) => location.pathname === `/${name}`,
 });
@@ -19,3 +20,5 @@ const getMicroApp = (name: string) => ({
 registerMicroApps([getMicroApp('angular-home'), getMicroApp('angular-detail')]);
 
 bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
+
+console.log('Current environment: ', environment);
