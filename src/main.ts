@@ -21,4 +21,4 @@ registerMicroApps([getMicroApp('angular-home'), getMicroApp('angular-detail')]);
 
 bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
 
-console.log('Current environment: ', environment);
+console.log('Current environment is', environment);
