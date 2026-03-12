@@ -23,8 +23,9 @@
             "customWebpackConfig": {
               "path": "config/extra-webpack.config.js"
             },
-            "polyfills": ["zone.js"],
+            "indexTransform": "config/index-html-transform.js",
             "outputPath": "dist/micro-main",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "less",
             "assets": [
