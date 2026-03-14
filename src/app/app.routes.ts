@@ -6,7 +6,6 @@
  */
 import { Routes } from '@angular/router';
 import { EmptyComponent } from '../pages/empty/empty.component';
-import { HomeComponent } from '../pages/home/home.component';
 
 export enum RouteName {
   HOME = 'home',
@@ -18,7 +17,7 @@ export enum RouteName {
 export const routes: Routes = [
   {
     path: RouteName.HOME,
-    component: HomeComponent,
+    loadComponent: () => import('../pages/home/home.component').then((m) => m.HomeComponent),
   },
   {
     path: RouteName.DETAIL,
