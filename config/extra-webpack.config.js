@@ -2,8 +2,16 @@
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-03-13 00:03:03
  * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-03-13 00:14:51
+ * @LastEditTime: 2026-03-18 22:55:20
  */
+
+/** 添加 externals */
+const addExternals = (config) => {
+  config.externals = {
+    ...config.externals,
+    'zone.js': 'Zone',
+  };
+};
 
 /** 添加拆包配置 */
 const addSplitChunks = (config) => {
@@ -29,6 +37,7 @@ const addSplitChunks = (config) => {
 };
 
 module.exports = (config, options) => {
+  addExternals(config);
   addSplitChunks(config);
 
   return config;
