@@ -5,10 +5,10 @@
  * @LastEditTime: 2026-02-18 10:38:08
  */
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { initGlobalState, MicroAppStateActions, start } from 'qiankun';
-import { GlobalState, InitGlobalState } from '../types/common';
+import { GlobalState } from '../types/common';
 import { RouteName } from './app.routes';
 
 @Component({
@@ -22,15 +22,16 @@ import { RouteName } from './app.routes';
 export class AppComponent implements OnInit {
   public readonly RouteName = RouteName;
 
-  public readonly microStates = signal<Array<GlobalState>>([]);
-
-  /** 初始状态 */
-  private __initState!: InitGlobalState;
+  /** 微前端全局状态 */
+  public readonly globalStates = signal<Array<GlobalState>>([]);
 
   /** 微前端传值 actions */
   private __actions?: MicroAppStateActions;
 
-  constructor(private readonly __date: DatePipe) {}
+  constructor(
+    private readonly __date: DatePipe,
+    private readonly __cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit(): void {
     start({
@@ -39,26 +40,32 @@ export class AppComponent implements OnInit {
     });
 
     // 初始化 qiankun 全局状态，子应用可通过 initGlobalState 订阅变化
-    this.__initState = {
+    const initState: GlobalState = {
       appName: 'micro-main',
       loadedTimeStr: this.__getTimeStr(),
+      from: 'main',
+      timeStr: this.__getTimeStr(),
+      data: 'Hello from main -- ' + Math.random().toString(16).slice(2, 6),
     };
-    this.__actions = initGlobalState(this.__initState);
+    this.__actions = initGlobalState(initState);
 
     // 监听全局状态变化（包括子应用改变全局状态）
+    // 第二个参数 fireImmediately 为 true，表示立即执行一次回调，获取初始状态
     this.__actions.onGlobalStateChange((state: Record<string, any>, prev: Record<string, any>) => {
-      let states = this.microStates();
-      states = [state as GlobalState, ...states];
-      this.microStates.set(states);
-    });
+      const states = [state as GlobalState, ...this.globalStates()];
+      this.globalStates.set(states);
+
+      // onGlobalStateChange 回调在 qiankun 内部执行，Angular 无法感知到状态变化，需要手动触发变更检测
+      this.__cdr.detectChanges();
+    }, true);
   }
 
   /** 向微前端发送数据 */
   public sendData(): void {
     if (!this.__actions) return;
 
+    // setGlobalState 是 Object.assign 方式，订阅者会拿到合并后的全局状态
     const state: GlobalState = {
-      ...this.__initState,
       from: 'main',
       timeStr: this.__getTimeStr(),
       data: 'Hello from main -- ' + Math.random().toString(16).slice(2, 6),

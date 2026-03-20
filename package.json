@@ -1,14 +1,14 @@
 {
   "name": "micro-main",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "serve": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+  "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "build": "ng build",
+    "ng": "ng",
+    "serve": "ng serve --open",
+    "test": "ng test",
+    "watch": "ng build --watch --configuration development"
+  },
   "dependencies": {
     "@angular/animations": "^18.2.0",
     "@angular/common": "^18.2.0",
@@ -28,12 +28,16 @@
     "@angular/cli": "^18.2.21",
     "@angular/compiler-cli": "^18.2.0",
     "prettier": "^3.8.1",
+    "prettier-plugin-package": "^2.0.0",
     "typescript": "~5.5.2"
   },
   "prettier": {
     "printWidth": 100,
     "tabWidth": 2,
     "trailingComma": "all",
-    "singleQuote": true
+    "singleQuote": true,
+    "plugins": [
+      "prettier-plugin-package"
+    ]
   }
 }

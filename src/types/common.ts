@@ -13,8 +13,8 @@ export interface InitGlobalState {
   loadedTimeStr: string;
 }
 
-/** 全局状态 */
-export interface GlobalState extends InitGlobalState {
+/** 全局状态（initGlobalState 初始化后，setGlobalState 是 Object.assign 方式） */
+export interface GlobalState extends Partial<InitGlobalState> {
   /** 状态来源 */
   from: 'main' | 'angular';
   /** 状态更新时间 */
