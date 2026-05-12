@@ -32,7 +32,7 @@
     "typescript": "~5.5.2"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 80,
     "tabWidth": 2,
     "trailingComma": "all",
     "singleQuote": true,

@@ -2,7 +2,7 @@
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
  * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-02-16 22:23:03
+ * @LastEditTime: 2026-05-13 07:56:44
  */
 import { Routes } from '@angular/router';
 import { EmptyComponent } from '../pages/empty/empty.component';
@@ -11,24 +11,36 @@ export enum RouteName {
   HOME = 'home',
   DETAIL = 'detail',
   ANGULAR_HOME = 'angular-home',
-  Angular_DETAIL = 'angular-detail',
+  ANGULAR_DETAIL = 'angular-detail',
+  REACT_HOME = 'react-home',
+  REACT_DETAIL = 'react-detail',
 }
 
 export const routes: Routes = [
   {
     path: RouteName.HOME,
-    loadComponent: () => import('../pages/home/home.component').then((m) => m.HomeComponent),
+    loadComponent: () =>
+      import('../pages/home/home.component').then((m) => m.HomeComponent),
   },
   {
     path: RouteName.DETAIL,
-    loadComponent: () => import('../pages/detail/detail.component').then((m) => m.DetailComponent),
+    loadComponent: () =>
+      import('../pages/detail/detail.component').then((m) => m.DetailComponent),
   },
   {
     path: RouteName.ANGULAR_HOME,
     component: EmptyComponent,
   },
   {
-    path: RouteName.Angular_DETAIL,
+    path: RouteName.ANGULAR_DETAIL,
+    component: EmptyComponent,
+  },
+  {
+    path: RouteName.REACT_HOME,
+    component: EmptyComponent,
+  },
+  {
+    path: RouteName.REACT_DETAIL,
     component: EmptyComponent,
   },
   {
