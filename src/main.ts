@@ -1,8 +1,8 @@
 /*
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
- * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-05-13 07:55:24
+ * @LastEditors: error: git config user.email & please set dead value or install git
+ * @LastEditTime: 2026-05-17 11:07:14
  */
 import { bootstrapApplication } from '@angular/platform-browser';
 import { registerMicroApps } from 'qiankun';
@@ -28,11 +28,22 @@ const getReactApp = (name: string) => ({
   activeRule: (location: Location) => location.pathname === `/${name}`,
 });
 
+const getVueApp = (name: string) => ({
+  name,
+  entry: environment.production
+    ? 'http://8.141.84.169:8003/index.html'
+    : '//localhost:8003',
+  container: '#micro-app',
+  activeRule: (location: Location) => location.pathname === `/${name}`,
+});
+
 registerMicroApps([
   getAngularApp('angular-home'),
   getAngularApp('angular-detail'),
   getReactApp('react-home'),
   getReactApp('react-detail'),
+  getVueApp('vue-home'),
+  getVueApp('vue-detail'),
 ]);
 
 bootstrapApplication(AppComponent, appConfig).catch((err) =>

@@ -1,8 +1,8 @@
 /*
  * @Author: lvdengming@foxmail.com
  * @Date: 2026-01-25 18:44:20
- * @LastEditors: lvdengming@foxmail.com
- * @LastEditTime: 2026-05-13 07:56:44
+ * @LastEditors: error: git config user.email & please set dead value or install git
+ * @LastEditTime: 2026-05-17 11:06:22
  */
 import { Routes } from '@angular/router';
 import { EmptyComponent } from '../pages/empty/empty.component';
@@ -14,6 +14,8 @@ export enum RouteName {
   ANGULAR_DETAIL = 'angular-detail',
   REACT_HOME = 'react-home',
   REACT_DETAIL = 'react-detail',
+  VUE_HOME = 'vue-home',
+  VUE_DETAIL = 'vue-detail',
 }
 
 export const routes: Routes = [
@@ -41,6 +43,14 @@ export const routes: Routes = [
   },
   {
     path: RouteName.REACT_DETAIL,
+    component: EmptyComponent,
+  },
+  {
+    path: RouteName.VUE_HOME,
+    component: EmptyComponent,
+  },
+  {
+    path: RouteName.VUE_DETAIL,
     component: EmptyComponent,
   },
   {
